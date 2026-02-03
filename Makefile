@@ -17,7 +17,7 @@ SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
 
 OBJ_FILES := $(SRC_FILES:$(SRC_DIR)/%.cpp=%.o)
 
-CPPFLAGS := -MMD -MP -I ./include -isystem ../qmm_sdks -isystem ../qmm2/include
+CPPFLAGS := -MMD -MP -I ./include -isystem ../qmm_sdks -isystem ../qmm2/include -isystem ../sof2gt_qmm/include
 CFLAGS   := -Wall -pipe -fPIC
 LDFLAGS  := -shared -fPIC
 LDLIBS   :=
