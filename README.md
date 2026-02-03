@@ -1,7 +1,7 @@
 # Stub_SoF2GT
-Stub_SoF2GT - Example stub plugin for SOF2GT_QMM
-Copyright 2025-2026
-https://github.com/thecybermind/stub_sof2gt/
+Stub_SoF2GT - Example stub plugin for SOF2GT_QMM  
+Copyright 2025-2026  
+https://github.com/thecybermind/stub_sof2gt/  
 3-clause BSD license: https://opensource.org/license/bsd-3-clause  
 
 Created By: Kevin Masterson < k.m.masterson@gmail.com >
