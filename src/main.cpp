@@ -38,8 +38,6 @@ sof2gt_pluginvars_t* sof2gt_pluginvars = nullptr;
 
 // log level to use for all trace logging
 const int loglevel = QMMLOG_INFO;
-// should we ignore outputting repeated GT_vmMain calls?
-bool ignore_hotpath = true;
 
 
 C_DLLEXPORT void QMM_Query(plugininfo_t** pinfo) {
