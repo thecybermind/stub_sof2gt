@@ -86,7 +86,7 @@ static bool is_ignoring_syscalls = false;
 intptr_t SOF2GT_GT_vmMain(intptr_t cmd, intptr_t* args) {
 	if (cmd == GAMETYPE_INIT) {
 		// example showing writing to QMM log on initialization
-		QMM_WRITEQMMLOG(QMM_VARARGS("Stub_SoF2GT loaded! Game engine: %s\n", QMM_GETGAMEENGINE()), QMMLOG_INFO);
+		QMM_WRITEQMMLOG(QMMLOG_INFO, "Stub_SoF2GT loaded! Game engine: %s\n", QMM_GETGAMEENGINE());
 	}
 
 	// ignore repeated GAMETYPE_RUN_FRAME calls
@@ -95,7 +95,7 @@ intptr_t SOF2GT_GT_vmMain(intptr_t cmd, intptr_t* args) {
 	}
 	else {
 		const char* msgname = gt_mod_msgname(cmd);
-		QMM_WRITEQMMLOG(QMM_VARARGS("SOF2GT_GT_vmMain(%s)\n", msgname), loglevel);
+		QMM_WRITEQMMLOG(loglevel, "SOF2GT_GT_vmMain(%s)\n", msgname);
 	}
 	last_cmd = cmd;
 
@@ -106,7 +106,7 @@ intptr_t SOF2GT_GT_vmMain(intptr_t cmd, intptr_t* args) {
 intptr_t SOF2GT_GT_vmMain_Post(intptr_t cmd, intptr_t* args) {
 	if (!is_ignoring_syscalls) {
 		const char* msgname = gt_mod_msgname(cmd);
-		QMM_WRITEQMMLOG(QMM_VARARGS("SOF2GT_GT_vmMain_Post(%s)\n", msgname), loglevel);
+		QMM_WRITEQMMLOG(loglevel, "SOF2GT_GT_vmMain_Post(%s)\n", msgname);
 	}
 
 	is_ignoring_syscalls = false;
@@ -124,16 +124,16 @@ intptr_t SOF2GT_GT_syscall(intptr_t cmd, intptr_t* args) {
 	    cmd == GT_REGISTEREFFECT ||
 	    cmd == GT_REGISTERICON ||
 	    cmd == GT_USETARGETS) {
-		QMM_WRITEQMMLOG(QMM_VARARGS("SOF2GT_GT_syscall(%s, \"%s\")\n", msgname, (char*)args[0]), loglevel);
+		QMM_WRITEQMMLOG(loglevel, "SOF2GT_GT_syscall(%s, \"%s\")\n", msgname, (char*)args[0]);
 	}
 	else if (cmd == GT_REGISTERITEM ||
 	         cmd == GT_REGISTERTRIGGER ||
 	         cmd == GT_TEXTMESSAGE ||
 	         cmd == GT_RADIOMESSAGE) {
-		QMM_WRITEQMMLOG(QMM_VARARGS("SOF2GT_GT_syscall(%s, %d, \"%s\")\n", msgname, args[0], (char*)args[1]), loglevel);
+		QMM_WRITEQMMLOG(loglevel, "SOF2GT_GT_syscall(%s, %d, \"%s\")\n", msgname, args[0], (char*)args[1]);
 	}
 	else {
-		QMM_WRITEQMMLOG(QMM_VARARGS("SOF2GT_GT_syscall(%s)\n", msgname), loglevel);
+		QMM_WRITEQMMLOG(loglevel, "SOF2GT_GT_syscall(%s)\n", msgname);
 	}
 	SOF2GT_RET_IGNORED(0);
 }
@@ -148,16 +148,16 @@ intptr_t SOF2GT_GT_syscall_Post(intptr_t cmd, intptr_t* args) {
 	    cmd == GT_REGISTEREFFECT ||
 	    cmd == GT_REGISTERICON ||
 	    cmd == GT_USETARGETS) {
-		QMM_WRITEQMMLOG(QMM_VARARGS("SOF2GT_GT_syscall_Post(%s, \"%s\")\n", msgname, (char*)args[0]), loglevel);
+		QMM_WRITEQMMLOG(loglevel, "SOF2GT_GT_syscall_Post(%s, \"%s\")\n", msgname, (char*)args[0]);
 	}
 	else if (cmd == GT_REGISTERITEM ||
 	         cmd == GT_REGISTERTRIGGER ||
 	         cmd == GT_TEXTMESSAGE ||
 		     cmd == GT_RADIOMESSAGE) {
-		QMM_WRITEQMMLOG(QMM_VARARGS("SOF2GT_GT_syscall_Post(%s, %d, \"%s\")\n", msgname, args[0], (char*)args[1]), loglevel);
+		QMM_WRITEQMMLOG(loglevel, "SOF2GT_GT_syscall_Post(%s, %d, \"%s\")\n", msgname, args[0], (char*)args[1]);
 	}
 	else {
-		QMM_WRITEQMMLOG(QMM_VARARGS("SOF2GT_GT_syscall_Post(%s)\n", msgname), loglevel);
+		QMM_WRITEQMMLOG(loglevel, "SOF2GT_GT_syscall_Post(%s)\n", msgname);
 	}
 	SOF2GT_RET_IGNORED(0);
 }
