@@ -1,1 +1,1 @@
-msbuild .\msvc\sof2gt_qmm.vcxproj /p:Configuration=Debug /p:Platform=x86
+msbuild .\msvc\stub_sof2gt.vcxproj /p:Configuration=Debug /p:Platform=x86
