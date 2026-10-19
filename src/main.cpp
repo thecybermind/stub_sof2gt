@@ -28,12 +28,8 @@ plugin_info g_plugininfo = {
 	"https://github.com/thecybermind/stub_sof2gt/",	// website of plugin
 	"STUB_SOF2GT",									// log tag
 };
-eng_syscall g_syscall = nullptr;
-eng_syscall_args g_syscall_args = nullptr;
-mod_vmMain g_vmMain = nullptr;
-mod_vmMain_args g_vmMain_args = nullptr;
-plugin_funcs* g_pluginfuncs = nullptr;
-plugin_vars* g_pluginvars = nullptr;
+plugin_funcs g_pluginfuncs;
+plugin_vars g_pluginvars;
 
 sof2gt_plugin_vars* sof2gt_pluginvars = nullptr;
 
@@ -41,15 +37,12 @@ sof2gt_plugin_vars* sof2gt_pluginvars = nullptr;
 const int loglevel = QMMLOG_INFO;
 
 
-C_DLLEXPORT void QMM_Query(plugin_info** pinfo) {
-	// give QMM our plugin info struct
-	QMM_GIVE_PINFO();
+C_DLLEXPORT void QMM_Query(plugin_info** plugininfo, plugin_funcs** pluginfuncs, plugin_vars** pluginvars) {
+	QMM_GIVE_PTRS();
 }
 
 
-C_DLLEXPORT int QMM_Attach(eng_syscall engfunc, eng_syscall_args engfunc_args, mod_vmMain modfunc, mod_vmMain_args modfunc_args, plugin_funcs* pluginfuncs, plugin_vars* pluginvars) {
-	QMM_SAVE_VARS();
-
+C_DLLEXPORT int QMM_Attach() {
 	// make sure this DLL is loaded only in the right engine
 	if (strcmp(QMM_GETGAMEENGINE(), "SOF2MP") != 0) {
 		QMM_WRITEQMMLOG(QMMLOG_ERROR, "This plugin only works with Soldier of Fortune 2 Multiplayer!\n");
